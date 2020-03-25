@@ -6,7 +6,16 @@ void main() => runApp(MaterialApp(
 
 
 
-class cardWidget extends StatelessWidget{
+class cardWidget extends StatefulWidget{
+  @override
+  _cardWidgetState createState() => _cardWidgetState();
+}
+
+class _cardWidgetState extends State<cardWidget> {
+
+  String location = "Colombo - 1";
+  int count = 1;
+
   @override
   Widget build(BuildContext context) {
 
@@ -17,6 +26,16 @@ class cardWidget extends StatelessWidget{
         centerTitle: true,
         backgroundColor: Colors.blueGrey[700],
       ),
+      floatingActionButton: FloatingActionButton(
+          onPressed: (){
+            setState(() {
+              count ++;
+              location = "Colombo - " + count.toString();
+            });
+          },
+      child : Icon(
+          Icons.add,
+      )),
       body: Padding(
         padding: EdgeInsets.all(30.0),
         child: Column(
@@ -77,7 +96,7 @@ class cardWidget extends StatelessWidget{
                   width: 5.0,
                 ),
                 Text(
-                    "Location",
+                    "location",
                     style: TextStyle(
                         color: Colors.grey,
                         letterSpacing: 2.0
@@ -86,13 +105,11 @@ class cardWidget extends StatelessWidget{
               ],
             ),
 
-
-
             SizedBox(
               height: 5.0,
             ),
             Text(
-                "Colombo",
+                "$location",
                 style: TextStyle(
                     color: Colors.amber,
                     letterSpacing: 2.0,
@@ -122,12 +139,22 @@ class cardWidget extends StatelessWidget{
                 )
               ],
             ),
-
           ],
         )
       )
     );
-
   }
+}
 
+class Test extends StatefulWidget {
+  @override
+  _TestState createState() => _TestState();
+}
+
+
+class _TestState extends State<Test> {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
 }
